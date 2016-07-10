@@ -1,6 +1,6 @@
 #AutoNote.py
 '''
-# 3.5.x
+# 2.7.1
 Description: This is a desktop notetaking application designed to work similar 
 to sticky notes but auto append notes to 'collections' (other documents) based 
 on how they are tagged. Make your notes and use this to stick them in the 
@@ -11,17 +11,17 @@ Outputs: None
 Author: Michael
 '''
 import sys
-import tkinter
+import Tkinter
 import noteAppender
 import noteParser
 
 
-class AutoNote_tk(tkinter.Tk):
+class AutoNote_tk(Tkinter.Tk):
 	'''This class contains a text editor GUI'''
 
 
 	def __init__(self, parent):
-		tkinter.Tk.__init__(self,parent)
+		Tkinter.Tk.__init__(self,parent)
 		self.parent = parent
 		self.initialize()
 
@@ -31,20 +31,20 @@ class AutoNote_tk(tkinter.Tk):
 		self.grid()
 
 		#text entries to the editor
-		self.entryVariable = tkinter.StringVar()
-		self.entry = tkinter.Entry(self, textvariable=self.entryVariable)
+		self.entryVariable = Tkinter.StringVar()
+		self.entry = Tkinter.Entry(self, textvariable=self.entryVariable)
 		self.entry.grid(column=0, row=0, sticky='EW')
 		self.entry.bind("<Return>", self.OnPressEnter)
 		self.entryVariable.set(u"Enter text here.")
 
 		#Display Button
-		button = tkinter.Button(self, text=u"Append Note!",
+		button = Tkinter.Button(self, text=u"Append Note!",
 								command=self.OnButtonClick)
 		button.grid(column=1, row=0)
 
 		#Display label
-		self.labelVariable = tkinter.StringVar()
-		label = tkinter.Label(self, textvariable=self.labelVariable,
+		self.labelVariable = Tkinter.StringVar()
+		label = Tkinter.Label(self, textvariable=self.labelVariable,
 							  anchor="w", fg="white", bg="blue")
 		label.grid(column=0, row=1, columnspan=2, stick='EW')
 		self.labelVariable.set(u"Hello")
@@ -55,7 +55,7 @@ class AutoNote_tk(tkinter.Tk):
 		self.update()
 		self.geometry(self.geometry())
 		self.entry.focus_set()
-		self.entry.selection_range(0, tkinter.END)
+		self.entry.selection_range(0, Tkinter.END)
 
 
 	def OnButtonClick(self):
@@ -64,14 +64,14 @@ class AutoNote_tk(tkinter.Tk):
 
 		self.labelVariable.set("Note Appended!")
 		self.entry.focus_set()
-		self.entry.selection_range(0,tkinter.END)
+		self.entry.selection_range(0,Tkinter.END)
 
 	
 	def OnPressEnter(self, event):
 		raise Exception('Not implemented!')
 		self.labelVariable.set("You clicked the enter)")
 		self.entry.focus_set()
-		self.entry.selection_range(0,tkinter.END)
+		self.entry.selection_range(0,Tkinter.END)
 
 
 
